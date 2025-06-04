@@ -220,7 +220,7 @@ textarea {
   align-self: stretch;
   border-radius: 20px;
   @include typography(base);
-  border: 1px solid var(--color-text-light);
+  border: 1px solid var(--color-secondary);
   transition: box-shadow 0.3s ease-in-out;
   /* Add a smooth transition effect */
   background: var(--color-white);

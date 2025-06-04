@@ -92,10 +92,10 @@
   //   padding: 0;
   // }
   // background: var(--bg-body) !important;
-  padding: 100px 0px;
+  padding: 60px 0px;
 
   @include desktop-small {
-    padding: 60px 0 0;
+    padding: 40px 0;
   }
   .container {
     display: flex;
@@ -103,7 +103,7 @@
     gap: 78px;
     // align-self: stretch;
     color: var(--profile-text);
-    // max-width: 1344px;
+    max-width: 1280px;
     // margin: 80px auto;
     align-items: flex-start;
     @include desktop-small {
@@ -181,31 +181,37 @@
 
       &:first-child {
         flex: 55%;
-        background-color: var(--color-tertiary);
+        // background-color: var(--color-tertiary);
         border-radius: 24px;
-        // border: 1px solid var(--color-light-shade);
+        border: 1px solid var(--color-secondary);
         padding: 40px;
-        color: var(--color-text-light);
+        color: var(--color-text-dark);
 
         @include desktop-small {
           padding: 40px 20px;
         }
 
         h2 {
-          display: none;
+          // display: none;
           color: var(--color-text-dark);
           font-family: var(--secondary-font);
           margin-bottom: 3.75rem;
           @include typography(display-lg, bold);
           @include desktop-small {
+            text-align: center;
+            
             @include typography(display-sm, semibold);
             // margin-bottom: 3.75rem;
+          }
+          @include mobile{
+            max-width: 272px;
           }
         }
       }
       &:last-child {
         flex: 45%;
-        background-color: var(--color-tertiary);
+        // background-color: var(--color-tertiary);
+        border: 1px solid var(--color-secondary);
         // border: 1px solid var(--color-light-shade);
         margin-bottom: 0;
         border-radius: 24px;
@@ -222,7 +228,7 @@
           color: var(--color-text-dark);
           text-align: center;
           margin-bottom: 1.75rem;
-          @include typography(display-lg, bold);
+          @include typography(display-md, bold);
           @include desktop-small {
             @include typography(display-sm, bold);
             // margin-bottom: 1.5rem;
@@ -306,7 +312,7 @@
 
       @include desktop-small {
         width: fit-content;
-        align-self: center;
+        // align-self: center;
       }
 
 
