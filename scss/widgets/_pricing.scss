@@ -1,17 +1,36 @@
 .pricings {
-  padding: 100px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 80px;
+  padding: 100px 16px 80px;
+
+  // padding-left: 1rem;
+  // padding-right: 1rem;
 
   @include desktop-small {
     padding: 40px 0;
-    gap: 40px;
+    
+  }
+
+  .pricing_body {
+    background-image: url(../../images/pricing_bg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 67px 0;
+    border-radius: 32px;
+    max-width: 1274px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+
+    @include mobile {
+      padding: 37px 0 61px;
+      gap: 34px;
+    }
   }
 
   .pricing-header {
-    max-width: 659px;
+    max-width: 882px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -53,9 +72,9 @@
 
     .block-title {
       text-align: center;
-      color: var(--color-text-dark);
+      color: var(--color-white);
       font-family: var(--secondary-font);
-      @include typography(display-lg, semibold);
+      @include typography(display-xl, bold);
 
       @include desktop-small {
         @include typography(display-md, semibold);
@@ -66,21 +85,23 @@
         color: var(--color-primary);
         font-family: var(--secondary-font);
         @include typography(display-lg, semibold);
-  
+
         @include desktop-small {
           @include typography(display-md, semibold);
         }
       }
     }
-    // p {
-    //   color: var(--color-text-light);
-    //   @include typography(text-xl, regular);
-    //   text-align: center;
 
-    //   @include desktop-small {
-    //     @include typography(text-lg, regular);
-    //   }
-    // }
+    p {
+      color: var(--color-white);
+      @include typography(text-lg, regular);
+      text-align: center;
+      max-width: 700px;
+
+      // @include desktop-small {
+      //   @include typography(text-lg, regular);
+      // }
+    }
   }
 
   .pricing-contents-wrapper {
@@ -130,7 +151,7 @@
         align-self: stretch;
         opacity: 0;
 
-        @include desktop-small{
+        @include desktop-small {
           align-self: center;
         }
 
@@ -138,6 +159,7 @@
           .package-top-section {
             background-image: url("../../images/pricing02.png") !important;
           }
+
           .price,
           .billed-days,
           .billed-section {
@@ -205,7 +227,7 @@
           //   .package-top-section{
           //     background-image: url("../../images/pricing02.png");
           //   }
-            
+
           // }
 
           .package-top-section {
@@ -217,19 +239,21 @@
             background-position: center;
             background-size: cover;
 
-          
+
             .package-top-section-img {
               display: none;
+
               img {
                 transform: scale(1.1);
                 max-width: 100%;
+
                 &:hover {
                   transform: scale(1.1);
                 }
               }
             }
 
-            & > .price {
+            &>.price {
               display: flex;
               flex-direction: column;
               gap: 20px;
@@ -259,6 +283,7 @@
                     font-family: var(--secondary-font);
                     margin-bottom: 8px;
                   }
+
                   .billed-days {
                     margin-bottom: 0 !important;
                     color: var(--color-black);
@@ -285,6 +310,7 @@
                     margin-bottom: 10px !important;
                   }
                 }
+
                 .billed-section {
                   display: ruby !important;
                   margin-top: 0 !important;
@@ -301,13 +327,12 @@
                     @include typography(text-xl, semibold);
                     color: var(--color-black);
 
-                    @include desktop-small {
-                    }
+                    @include desktop-small {}
                   }
                 }
               }
 
-              & > p {
+              &>p {
                 color: var(--pricing-text);
                 text-align: center;
                 font-style: normal;
@@ -338,8 +363,8 @@
               }
 
               img {
-                @include mobile {
-                }
+                @include mobile {}
+
                 width: 50px;
               }
             }
@@ -404,7 +429,7 @@
           }
         }
 
-        & > div:not(.pricing-content) {
+        &>div:not(.pricing-content) {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
