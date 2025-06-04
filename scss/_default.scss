@@ -33,19 +33,21 @@ body {
     margin: 10px;
 
 
-    @include mobile{
+    @include mobile {
       margin: 0;
     }
   }
 }
+
 h1 {
   @include typography(display-xl);
+
   @include mobile {
     @include typography(display-lg);
   }
 }
 
-h3{
+h3 {
   font-style: normal;
   @include typography(display-lg, bold);
   font-family: var(--default-font);
@@ -185,6 +187,7 @@ h6 span {
 .form-input {
   margin-bottom: 18px;
 }
+
 //
 //.button-secondary {
 //  display: block;
@@ -235,6 +238,12 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   color: rgba(var(--color-black), 0.5);
+}
+
+input:focus {
+  outline: none;
+  border-color: #98A2B3;
+  box-shadow: none;
 }
 
 /* Define the slide-up animation */
@@ -375,24 +384,30 @@ label.error {
     padding: 2.5rem 1rem;
   }
 }
-.flex{
+
+.flex {
   display: flex;
 }
-.flex-col{
+
+.flex-col {
   flex-direction: column;
 }
-.gap-2{
-  gap:2rem;
+
+.gap-2 {
+  gap: 2rem;
 }
-.inline-flex{
+
+.inline-flex {
   display: inline-flex;
 }
-.ml-2{
+
+.ml-2 {
   margin-left: 2px;
 }
 
 .actions-partial-global {
   margin-bottom: 51px;
+
   a {
     color: var(--color-black);
     background: var(--color-primary);

@@ -70,13 +70,15 @@
       }
 
       .whq-card-content {
-        flex: 1;
+        // flex: 1;
+        max-width: 658px;
+        width: 100%;
         padding: 40px;
 
         border-radius: 24px;
-        background: var(--color-tertiary);
-        box-shadow: 0px 3px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
-        border: 1px solid var(--color-white);
+        // background: var(--color-tertiary);
+        // box-shadow: 0px 3px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+        border: 1px solid var(--color-secondary);
 
         .notice-container {
           margin-bottom: 1rem;
@@ -208,7 +210,8 @@
               color: var(--color-white);
               background: var(--color-primary);
               border: none;
-              width: 100%;
+              // width: 100%;
+              width: fit-content;
       
               margin: 0 auto;
               border-radius: 30px;

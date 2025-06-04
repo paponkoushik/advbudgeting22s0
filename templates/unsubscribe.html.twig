@@ -35,6 +35,7 @@
                 {% if unsub_content.dec.translatable != '' %}
                     <p>{{ unsub_content.dec.translatable | raw }}</p>
                 {% endif %}
+
                 {% include "forms/form.html.twig" with {form: forms('unsubscribe'), action: '#'} %}
 
                 {# <form name="unsubscribe" action="#" method="POST" id="unsubscribe" class=" ">
