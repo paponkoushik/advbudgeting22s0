@@ -1,6 +1,7 @@
 .faqs {
   padding: 100px 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #F0FFD7 94.26%);
+  // background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #F0FFD7 94.26%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #EFEEEB 94.26%);
 
   // background-image: url(../../images/bg_faq.webp);
   // background-size: cover;
@@ -17,7 +18,7 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
-    max-width: 974px;
+    max-width: 866px;
     width: 100%;
 
     @include desktop-small {
@@ -41,7 +42,7 @@
         text-align: center;
         font-family: var(--secondary-font);
         color: var(--color-text-dark);
-        @include typography(display-xl, medium);
+        @include typography(display-xl, semibold);
 
 
         @include desktop-small {
@@ -50,8 +51,8 @@
 
         span {
           font-family: var(--secondary-font);
-          color: var(--color-primary);
-          @include typography(display-xl, medium);
+          color: var(--color-secondary);
+          @include typography(display-xl, semibold);
 
           @include desktop-small {
             @include typography(display-md, semibold);
@@ -112,7 +113,7 @@
           .faq-accordion-item {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
             width: 100%;
             padding: 20px;
             background: var(--color-white);
