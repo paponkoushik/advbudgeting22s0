@@ -45,8 +45,8 @@
 
         .all-info {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            // flex-direction: column;
+            gap: 1.5rem;
             align-items: flex-start;
             justify-content: center;
             align-items: stretch;
@@ -60,13 +60,13 @@
             .contact {
                 display: flex;
                 gap: 16px;
-                // max-width: 364px;
+                max-width: 364px;
                 width: 100%;
                 background: var(--color-white);
                 align-items: center;
 
                 border-radius: 12px;
-                border: 1px solid var(--color-text-dark);
+                border: 1px solid var(--color-secondary);
                 padding: 16px;
 
                 // @include desktop-small {

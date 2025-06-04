@@ -10,17 +10,20 @@
 
 .contact-block-wrapper {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   gap: 120px;
   align-items: stretch;
   justify-content: space-between;
-  max-width: 1162px;
-  margin: 0 auto;
+  // max-width: 1162px;
+  // margin: 0 auto;
 
   @include desktop-small {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     gap: 40px;
+    img {
+      display: none;
+    }
   }
 
   .contact-left {
@@ -37,6 +40,7 @@
 
     @include desktop-small {
       gap: 0;
+      display: none;
     }
 
     h2 {
@@ -73,49 +77,18 @@
 .contact-block-section {
 
   padding: 100px 0;
-  // background: var(--bg-body);
-  // display: flex;
-  // flex-direction: column;
-  // gap: 60px;
 
   @include desktop-small {
-    // flex-direction: column-reverse;
     padding: 20px 0 0;
-  }
-
-  // background: var(--color-white);
-  // height: 100%;
-  // clip-path: ellipse(100% 50% at 50% 100%);
-
-  // background-position: top;
-  // background-size: 50%;
-  // z-index: 1;
-
-
-  // &::before {
-  //   content: ""; 
-  //   position: absolute;
-  //   bottom: 0%;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 185%; 
-  //   clip-path: ellipse(100% 50% at 50% 100%);
-  //   background: var(--color-white); 
-  //   z-index: -1; 
-  // }
-
-
-  @include desktop-small {
-    // padding: 0;
-    // &::before {
-    //   clip-path: unset;
-    //   height: 95%; 
-    // }
-
   }
 
   .container {
     padding: 0 2rem;
+
+    max-width: 1304px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 
     @include desktop-small {
       padding: 0 1rem;
@@ -143,10 +116,10 @@
       max-width: 658px;
       width: 100%;
       padding: 40px;
-      background: var(--color-tertiary);
+      // background: var(--color-tertiary);
       border-radius: 24px;
-      // border: 1px solid var(--color-light-shade);
-      color: var(--color-text-light);
+      border: 1px solid var(--color-secondary);
+      color: var(--color-text-dark);
       gap: 3.125rem;
 
       // background: #F1F0E9;
@@ -244,9 +217,9 @@
 
         input,
         textarea {
-          outline: none;
+          // outline: none;
           background: var(--color-white);
-          //border-color: var(--color-black, #191B1F);
+          border-color: var(--color-secondary);
           //box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
         }
 
@@ -296,11 +269,11 @@
         .form-actions {
           margin-top: 40px;
           display: flex;
-          justify-content: end;
+          // justify-content: end;
 
           @include desktop-small{
             margin-top: 60px;
-            justify-content: center;
+            // justify-content: center;
           }
         }
 

@@ -211,7 +211,7 @@ h6 span {
 input:not([type="checkbox"]),
 textarea {
   appearance: none;
-  border: none;
+  border: 1px solid var(--color-secondary);
   width: 100%;
   display: flex;
   padding: 1rem 1.25rem;
