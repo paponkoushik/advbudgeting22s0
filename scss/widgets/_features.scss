@@ -1,138 +1,178 @@
 .feature-section {
-  padding: 100px 0;
-  // background: var(--bg-body);
-  position: relative;
+  padding: 30px 0 0;
+  background: var(--color-white);
 
   @include desktop-small {
-    padding: 60px 0;
+    padding: 0;
+
   }
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
 
-  .feature-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 64px;
-
-    .features-header-section {
+    .feature-wrapper {
       display: flex;
       flex-direction: column;
+
       align-items: center;
       justify-content: center;
-      text-align: center;
-      gap: 24px;
-      width: 50%;
+      gap: 40px;
 
-      @include desktop-small {
-        width: 100%;
+      @include desktop-small{
+        gap: 18px;
       }
 
-      .title {
-        @include typography("display-lg", "semibold");
-        font-family: var(--secondary-font);
-
-        @include desktop-small {
-          @include typography("display-md", "semibold");
+      .video-container {
+        max-width: 1136px;
+        width: 100%;
+        position: relative;
+      
+        video {
+          width: 100%;
+          display: block;
+          border-radius: 24px;
+          background: #000;
         }
-
-        span{
-          @include typography("display-lg", "semibold");
-          font-family: var(--secondary-font);
-          color: var(--color-primary);
-
-          @include desktop-small {
-            @include typography("display-md", "semibold");
+      
+        .play-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgba(0, 0, 0, 0.7);
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          font-size: 24px;
+          cursor: pointer;
+          z-index: 1;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-left: 5px;
+      
+          &:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+      
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
           }
         }
       }
 
-      .description {
-        p {
-          @include typography("text-lg", "regular");
-        }
-      }
-    }
-
-    .features-wrapper {
-      display: flex;
-      align-items: stretch;
-      gap: 20px;
-
-      @include desktop-small {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .features-img {
-        max-width: 340px;
-        width: 100%;
-        flex: 1 1 0;
+      .features-header-section {
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
+        text-align: center;
+        gap: 2rem;
+        width: 70%;
 
         @include desktop-small {
-          display: none;
+          width: 100%;
         }
 
-        img {
-          width: 100%;
-          max-height: 484px;
+        .title {
+          @include typography('display-lg', 'semibold');
+        }
+
+        .description {
+          p {
+            @include typography('text-xl', 'medium');
+          }
         }
       }
 
       .features-content-wrapper {
-        flex: 1 1 0;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 20px;
+        gap: 2rem;
+        // flex-wrap: wrap;
 
-        // @include desktop-small {
-        //   gap: 20px;
-        // }
+        @include desktop-small {
+          flex-direction: column;
+          gap: 20px;
+          // flex-wrap: nowrap;
+        }
 
         .feature-item {
-          flex: 1;
+          // background: #F6F9F8;
+          // border-radius: 20px;
+          // border: 1px solid #D7D7D7;
           transition: 1s ease-in-out;
+          max-width: 357px;
+          width: 100%;
+          padding: 2rem 2rem 0;
           display: flex;
           flex-direction: column;
-          gap: 6px;
-          padding: 20px;
-          // color: var(--color-white);
-          // border: 1px solid var(--color-secondary);
-          border-radius: 24px;
-          background: var(--color-tertiary);
-          // background-image: url("../../images/fe_card_bg.png");
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-size: 100% 100%;
+          gap: 1.5rem;
+          border-radius: 8px;
+
+          @include desktop-small {
+            width: 100%;
+            padding: 24px;
+          }
 
           .feature-image {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 19px;
+            // padding: 2rem;
+          }
 
-            img {
-              @include desktop-xl {
-                width: 100%;
-              }
+          hr {
+            border-bottom: 1px solid #818181;
+          }
+
+          .feature-content {
+            // padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .feature-title {
+              // height: unset !important;
+              @include typography(display-xs, semibold);
+              // margin-bottom: 1rem;
+            }
+
+            .feature-description {
+              @include typography('text-md', 'regular');
             }
           }
 
-          .feature-title {
-            @include typography("display-sm", "bold");
-            font-family: var(--secondary-font);
-            color: var(--color-text-dark);
-            height: auto !important;
-          }
+          // &:hover {
+          //   background: #15301F;
+          //   color: var(--color-white);
+          // }
+        }
+      }
 
-          .feature-description {
-            @include typography("text-md", "regular");
-            color: var(--color-text-light);
+      .actions {
+        .feature-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          padding: 12px 24px;
+          background: var(--color-secondary);
+          border-radius: 30px;
+          @include typography('text-lg', 'semibold');
+          border: none;
+
+          &:hover {
+            cursor: pointer;
           }
         }
       }
     }
-  }
+
+}
+
+.second-row-item-hide {
+  display: none;
 }

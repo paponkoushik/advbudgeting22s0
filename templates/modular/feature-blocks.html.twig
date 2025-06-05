@@ -4,71 +4,89 @@
 
 {% block render_block %}
 
-	<div class="feature-section" id="features-section">
+    <div class="feature-section " style="{% if(bg) %}background-image: url('{{ bg }}'){% endif %}" >
+        <div class="container">
 
-		<div class="container">
+            <div class="feature-wrapper">
+                {# <div class="features-header-section">
+                    {% if module.title %}
+                        <h3 class="title section-title">{{ module.title.translatable|striptags('<span>')|raw }}</h3>
+                    {% endif %}
 
-			<div class="feature-wrapper">
-				<div class="features-header-section">
-					{% if module.title %}
-						<h3 class="title section-title">{{ module.title.translatable|striptags('<span>')|raw }}</h3>
-					{% endif %}
+                    <div class="description">
+                        {% if page.content %}
+                            {{ page.content|raw }}
+                        {% endif %}
+                    
+                    </div>				
+                </div>        #}
 
-					<div class="description">
-						{% if page.content %}
-							{{ page.content|raw }}
-						{% endif %}
+                <div class="features-content-wrapper">
 
-					</div>
-				</div>
+                    {% set features = page.header.feature_blocks %}
+                    {% set features_first_row = page.header.feature_blocks[:3] %}
+                    {% set features_second_row = page.header.feature_blocks[3:] %}
 
-				<div class="features-wrapper">
-					<div class="features-content-wrapper">
-						{% set features = page.header.feature_blocks|slice(0, 2) %}
+                    {% for feature_block in features_first_row %}
+                        {% if feature_block.description != '' and feature_block.title != '' %}
 
-						{% for feature_block in features %}
-							{% if feature_block.description != '' and feature_block.title != '' %}
+                            <div class="feature-item">
+                                {% set image = page.media[feature_block.image] %}
 
-								<div class="feature-item">
-									{% set image = page.media[feature_block.image] %}
+                                <div class="feature-image">
+                                    <img class="" src="{{ image.url }}"/>
+                                </div>
 
-									<div class="feature-image">
-										<img class="" src="{{ image.url }}"/>
-									</div>
-									<h4 class="feature-title">{{ feature_block.title.translatable }}</h4>
-									<p class="feature-description">{{ feature_block.description.translatable }}</p>
-								</div>
-							{% endif %}
-						{% endfor %}
-					</div>
+                                {# <hr> #}
+                                
+                                <div class="feature-content">
+                                    <h4 class="feature-title">{{ feature_block.title.translatable }}</h4>
+                                    <p class="feature-description">{{ feature_block.description.translatable }}</p>
 
-					<div class="features-img">
-						<img src={{page.media[module.feature_bg].url}}/>
-					</div>
+                                </div>                                    
+                            </div>
 
-					<div class="features-content-wrapper">
-						{% set features = page.header.feature_blocks|slice(2) %}
+                        {% endif %}
+                    {% endfor %}
 
-						{% for feature_block in features %}
-							{% if feature_block.description != '' and feature_block.title != '' %}
+                    {% for feature_block in features_second_row %}
+                        {% if feature_block.description != '' and feature_block.title != '' %}
 
-								<div class="feature-item">
-									{% set image = page.media[feature_block.image] %}
+                            <div class="feature-item second-row-item-hide">
+                                {% set image = page.media[feature_block.image] %}
 
-									<div class="feature-image">
-										<img class="" src="{{ image.url }}"/>
-									</div>
-									<h4 class="feature-title">{{ feature_block.title.translatable }}</h4>
-									<p class="feature-description">{{ feature_block.description.translatable }}</p>
-								</div>
-							{% endif %}
-						{% endfor %}
-					</div>
-				</div>
+                                <div class="feature-image">
+                                    <img class="" src="{{ image.url }}"/>
+                                </div>
 
+                                <hr>
+                                
+                                <div class="feature-content">
+                                    <h4 class="feature-title">{{ feature_block.title.translatable }}</h4>
+                                    <p class="feature-description">{{ feature_block.description.translatable }}</p>
 
-			</div>
-		</div>
+                                </div>                                    
+                            </div>
 
-	</div>
+                        {% endif %}
+                    {% endfor %}
+       
+                </div>
+
+                <div class="video-container">
+                    <video 
+                        id="myVideo"
+                        class="lazy-video"
+                        width="100%"
+                        preload="none"
+                        poster="{{ url('theme://images/video-poster.png') }}"
+                        data-src="{{ url('theme://images/video.mp4') }}">
+                    </video>
+                    {# <button class="play-button">▶</button> #}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 {% endblock %}
