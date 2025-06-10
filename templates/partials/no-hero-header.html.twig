@@ -45,21 +45,16 @@
 				{% endif %}
 
 				{% if  noHeroContent.description != null %}
-					<p> {{ noHeroContent.description.translatable|striptags('<br>')|raw }} </p>
-
-					{# <div class="desc_btm">{{ page.content|raw }} </div> #}
+					<p> {{ noHeroContent.description.translatable }} </p>
 				{% endif %}
 
 				{% if noHeroContent.buttons != null %}
 					<div class="nohero_buttons">
 						{% for button in noHeroContent.buttons  %}
 					
-						<a class="button " href="{{ home_url|e }}{{ button.link }}">
+						<a class="button " href="{{ button.link }}">
 							<span>{{ button.text.translatable }}</span>
-							
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-							<path d="M12 16L16 12M16 12L12 8M16 12H8M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							</svg>
+				
 						</a>
 						{% endfor %}
 					</div>
@@ -75,12 +70,6 @@
 
 				</div>
 			{% endif %}
-
-			<div class="image-common">
-					
-				<img class="nohero_common" src="{{ url('theme://images/nohero/nohero_common.png') }}" alt="button icon">
-
-			</div>
 		</div>
 		<!-- End no-hero-wrapper -->
 	</div>
