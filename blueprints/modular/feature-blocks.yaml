@@ -18,6 +18,10 @@ form:
                   type: text
                   label: Title
                   classes: 'translatable'
+                header.module.sub_title.translatable:
+                  type: text
+                  label: Sub Title
+                  classes: 'translatable'
 
                 header.module.feature_bg:
                     type: pagemediaselect
