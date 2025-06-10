@@ -19,6 +19,10 @@ form:
                   type: text
                   label: Title
                   classes: 'translatable'
+                header.module.sub_title.translatable:
+                  type: text
+                  label: Sub Title
+                  classes: 'translatable'
 
                 header.module.slider:
                   type: list
