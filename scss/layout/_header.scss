@@ -160,6 +160,7 @@
         border-radius: 30px;
         transition: 1s all;
         white-space: nowrap;
+        padding: 0;
 
         svg {
           fill: var(--color-white);
@@ -180,7 +181,7 @@
         background: unset;
         font-size: 18px;
         font-style: normal;
-        font-weight: 800;
+        font-weight: 700;
         line-height: normal;
 
         &:hover {
@@ -199,7 +200,8 @@
         align-items: center;
         font-size: 18px;
         font-style: normal;
-        font-weight: 800;
+        font-weight: 700;
+        gap: 10px !important;
         line-height: normal;
 
         @include desktop-small {

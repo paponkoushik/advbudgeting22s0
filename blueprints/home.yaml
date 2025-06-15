@@ -66,6 +66,11 @@ form:
                   label: Forgot Top Sub Title
                   classess: 'translatable'
 
+                header.signup_btn_text.translatable:
+                  type: text
+                  label: Header Signup Title
+                  classess: 'translatable'
+
             unsub_section:
               ordering@: 3
               type: section

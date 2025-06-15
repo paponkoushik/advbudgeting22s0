@@ -3,35 +3,42 @@
 {% set contents = page.header.hero %}
 
 {% block render_block %}
-    <section class="hero-section" id="hero-section">
-        <div class="hero-wrapper container slide-in">
-            <div class="text-contents">
-                <div class="hero-content-head">
+	<section class="hero-section" id="hero-section">
+		<div class="hero-wrapper container slide-in">
+			<div class="text-contents">
+				<div class="hero-content-head">
 
-                    {% if contents.title != null %}
-                        <h1 class="hero-title">{{ contents.title.translatable|raw }}</h1>
-                    {% endif %}
+					{% if contents.h1 != null %}
+						<h1 class="hero-title">{{ contents.h1.translatable|raw }}</h1>
+					{% endif %}
 
-                    {% if contents.text != null %}
-                        <p>{{ contents.text.translatable|raw }}</p>
-                    {% endif %}
-                </div>
+					{% if contents.text != null %}
+						<p>{{ contents.text.translatable|raw }}</p>
+					{% endif %}
+				</div>
 
-                <div class="hero-buttons">
-                    {% for button in contents.buttons %}
-                        <a class="button slide-in {{ button.btn_class }}"
-                           href="/{{ grav.language.getActive }}{{ button.link }}">
-                            {{ button.text.translatable }}
-                        </a>
-                    {% endfor %}
-                </div>
-            </div>
+				<div class="hero-buttons">
+					{% for button in contents.buttons %}
+						<a class="button slide-in {{ button.btn_class }}" href="/{{ grav.language.getActive }}{{ button.link }}">
+							{{ button.text.translatable }}
+						</a>
+					{% endfor %}
+				</div>
+			</div>
 
-            {% if contents.image %}
-                <div class="image-contents">
-                    <img src="{{ page.media[contents.image].url }}" alt="Hero Image"/>
-                </div>
-            {% endif %}
-        </div>
-    </section>
+			{% if contents.image %}
+				<div class="image-contents">
+
+					<img class="hero-img" src="{{ page.media[contents.image].url }}" alt="Hero Image"/>
+
+
+					<img src="{{ url('theme://images/hero/cash.webp') }}" class="floating cash" alt="Cash Icon"/>
+					<img src="{{ url('theme://images/hero/dollar.webp') }}" class="floating dollar" alt="Bitcoin Icon"/>
+					<img src="{{ url('theme://images/hero/bitcoin.webp') }}" class="floating bitcoin" alt="USD Icon"/>
+					<img src="{{ url('theme://images/hero/arrow.webp') }}" class="floating arrow" alt="Time Chart"/>
+
+				</div>
+			{% endif %}
+		</div>
+	</section>
 {% endblock %}
