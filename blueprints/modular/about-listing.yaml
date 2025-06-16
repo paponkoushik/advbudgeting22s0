@@ -9,6 +9,10 @@ form:
           
 
           fields:
+            header.contents.title_1.translatable:
+              type: text
+              label: About Listing First Title
+              classess: 'translatable'
             header.contents.title.translatable:
               type: text
               label: About Listing Title
@@ -54,17 +58,17 @@ form:
                       label: Description
                       classes: 'translatable'
 
-            header.contents.image_left:
+            header.contents.image_left_top:
               type: pagemediaselect
-              label: Image Left
+              label: Image Left Top
 
-            header.contents.image_right:
+            header.contents.image_bottom_right:
               type: pagemediaselect
-              label: Image Right
+              label: Image Bottom Right
 
-            header.contents.image_large:
+            header.contents.image_bottom_left:
               type: pagemediaselect
-              label: Image Large
+              label: Image Bottom Left
 
             header.contents.img_title.translatable:
               type: text

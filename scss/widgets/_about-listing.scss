@@ -1,14 +1,13 @@
 .about-listing-wrapper {
-  padding-top: 110px;
-  padding-bottom: 110px;
-  background-image: url("../../images/list_bg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
+  padding: 100px 0;
+  // background-image: url("../../images/list_bg.png");
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: 100% 100%;
 
   @include desktop-small {
-    padding: 60px 0;
-    background-image: url("../../images/list_bg_mobile.png");
+    padding: 40px 0;
+    // background-image: url("../../images/list_bg_mobile.png");
   }
 
   .contents-wrapper {
@@ -30,7 +29,7 @@
       align-items: flex-start;
       flex-direction: column;
       gap: 24px;
-      flex: 1.2;
+      max-width: 549px;
 
       @include desktop-small {
         gap: 40px;
@@ -48,6 +47,29 @@
           text-align: center;
         }
 
+        .sub-title {
+          padding: 10px 20px;
+          border-radius: 24px;
+          background-color: var(--color-secondary);
+          color: var(--color-white);
+          display: flex;
+          gap: 16px;
+          align-items: center;
+
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30px;
+          width: fit-content;
+
+          @include desktop-small {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+          }
+        }
+
         h3 {
           font-family: var(--secondary-font);
           color: var(--color-text-dark);
@@ -57,7 +79,7 @@
           //   @include typography(display-md, bold);
           // }
 
-          span{
+          span {
             font-family: var(--secondary-font);
             color: var(--color-primary);
             @include typography(display-md, semibold);
@@ -113,8 +135,8 @@
 
             img {
               // margin-right: 8px;
-              width: 20px;
-              height: 20px;
+              width: 21px;
+              height: 21px;
               margin-top: 4px;
             }
           }
@@ -187,7 +209,7 @@
         width: 100%;
         position: relative;
 
-        @include tablet{
+        @include tablet {
           height: 410px;
         }
 
@@ -234,13 +256,39 @@
       }
 
       .double_img {
+        max-width: 706px;
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        gap: 16px;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 42px;
 
         @include desktop-small {
-          flex-direction: column;
+          align-items: center;
+        }
+
+        .image_top {
+          max-width: 552.72px;
+          width: 100%;
+        }
+
+        .buttom {
+          display: flex;
+          gap: 20px;
+          justify-content: space-between;
+          align-items: center;
+
+          .image_left {
+            max-width: 100%;
+            // width: 100%;
+            flex-basis: 50%;
+          }
+
+          .image_right {
+            max-width: 100%;
+            // width: 100%;
+            flex-basis: 50%;
+          }
         }
 
         .image_left {
