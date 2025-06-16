@@ -10,9 +10,9 @@
     width: 100%;
     padding: 40px;
     margin: 60px auto;
-    border: 1px solid var(--color-light-shade);
+    border: 1px solid var(--color-secondary);
     border-radius: 24px;
-    background: var(--color-secondary);
+    // background: var(--color-secondary);
 
     @include desktop-small {
       margin: 0 auto;

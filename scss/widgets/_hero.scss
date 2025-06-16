@@ -123,6 +123,10 @@
         left: 0;
       }
 
+      .about_hero {
+        display: none;
+      }
+
       .hero-img {
         width: 100%;
         display: block;
@@ -270,7 +274,7 @@
         top: 51%;
         right: 1%;
         transform: translateY(-50%);
-        
+
         @include mobile {
           top: 57%;
           right: 11%;
@@ -315,5 +319,113 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.page-about {
+  .hero-section {
+    background-image: url("../../images/about_hero_bg.webp");
+
+    @include mobile {
+      background: linear-gradient(-256deg, #FFFAEC 49.37%, #F24317 122.36%);
+      ;
+    }
+
+    .image-contents {
+      left: 0
+    }
+
+    .hero-wrapper {
+      @include desktop-small {
+        gap: 117px;
+      }
+    }
+
+    .left_bottom_wrapper {
+      display: none;
+    }
+
+    .hero-wrapper .image-contents .left_bottom_right {
+      display: none;
+    }
+
+    .hero-wrapper .image-contents .cash {
+      top: 6%;
+      left: 15%;
+
+      @include mobile {
+        top: 6%;
+        left: 3%;
+      }
+    }
+
+    .hero-wrapper .image-contents .bitcoin {
+      top: 23%;
+      right: 12%;
+
+      @include mobile {
+        top: 12%;
+        right: 0%;
+
+      }
+    }
+
+    .hero-wrapper .image-contents .dollar {
+      bottom: 23%;
+      left: 14%;
+      top: unset;
+      right: unset;
+
+      @include mobile {
+        bottom: 12%;
+        right: 13%;
+        left: unset;
+      }
+    }
+
+    .hero-wrapper .image-contents .about_hero {
+      display: block;
+      border-radius: 20px;
+      border: 2px solid var(--grad, #C4FDFF);
+
+      background: #FFF;
+
+      color: var(--color-text-dark);
+
+      max-width: 217px;
+      width: 100%;
+      padding: 12px 29px;
+
+      position: absolute;
+      right: 12%;
+      bottom: 22%;
+
+      @include desktop-small {
+        display: none;
+      }
+
+      .inner {
+        position: relative;
+
+        svg {
+          top: -77%;
+          right: -20%;
+          position: absolute;
+        }
+      }
+
+      p {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px;
+        max-width: 129px;
+        width: 100%;
+      }
+    }
+
+    .arrow {
+      display: none;
+    }
   }
 }
