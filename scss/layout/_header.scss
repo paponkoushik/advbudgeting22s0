@@ -10,19 +10,8 @@
   transition: background-color 0.3s, color 0.3s;
 
   @include desktop-small {
-    padding: 20px 0;
-    background: var(--color-white);
-  }
-
-  &.sticky {
-    background-color: var(--color-secondary);
-    padding: 20px 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-
-    @include desktop-small {
-      background: transparent;
-      box-shadow: none;
-    }
+    padding: 20px 0 0;
+    background: transparent;
 
     .header-wrapper {
       padding: 0;
@@ -31,12 +20,31 @@
       border-radius: 0;
 
       @include desktop-small {
-        border-radius: 8px;
+        border-radius: 24px;
         background: var(--color-white);
+        border: 0.5px solid var(--color-primary);
         padding: 10px 16px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
     }
+  }
+
+  &.sticky {
+    background-color: rgb(255 255 255 / 40%);
+    padding: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    .active-btn {
+      color: var(--color-primary) !important;
+    }
+
+    @include desktop-small {
+      background: transparent;
+      box-shadow: none;
+      padding: 20px 0 0;
+    }
+
+
   }
 
   .header-wrapper {
@@ -230,7 +238,7 @@
 
           @include desktop-small {
             order: 0;
-            margin-right: 16px;
+            // margin-right: 16px;
           }
 
           .lang-flag {
@@ -240,7 +248,7 @@
 
           svg {
             @include desktop-small {
-              filter: invert(1);
+              // filter: invert(1);
             }
           }
         }
@@ -258,7 +266,7 @@
             background-position: center;
             height: 24px;
             width: 24px;
-            filter: invert(1);
+            // filter: invert(1);
           }
 
           @include desktop-small {

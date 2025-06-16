@@ -13,7 +13,7 @@
     padding: 8px;
     // background-color: rgba(195, 195, 195, 0.30);
     // border-radius: 8px;
-    margin-left: 12px;
+    // margin-left: 12px;
   }
 
   .cheeseburger-menu {
@@ -28,7 +28,7 @@
     gap: 1rem;
     border-radius: 32px;
     background: var(--color-white);
-    top: 100px;
+    top: 82px;
     // border-top: 1px solid var(--bg-secondary);
 
     transform: translateX(-100%);
@@ -42,6 +42,8 @@
 
     &.open {
       transform: translateX(0);
+      max-width: calc(100% - 32px);
+      margin-left: 16px;
     }
 
     .cheeseburger-menu__close {
@@ -68,7 +70,7 @@
       gap: 8px;
       align-self: stretch;
 
-      &:last-child{
+      &:last-child {
         flex-direction: column;
       }
 
@@ -80,7 +82,7 @@
 
       .menu-item__link {
         color: var(--color-text-dark);
-        @include typography(text-lg, bold);
+        @include typography(text-lg, semibold);
         text-decoration: none;
         border-bottom: 4px solid transparent;
 
@@ -93,10 +95,15 @@
         padding: 10px 20px;
         background: transparent;
         color: var(--color-white);
-        background: var(--color-black);
+        background: var(--color-primary);
         appearance: none;
         @include typography(text-lg, bold);
         width: fit-content;
+
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
         // display: block;
         // border-radius: 30px;
 
@@ -108,12 +115,17 @@
         //   align-items: center;
         // }
 
-        &.login{
-          background: var(--color-primary);
-          color: var(--color-white);
+        &.login {
+          background: transparent;
+          color: var(--color-primary);
+          padding: 10px 20px;
           // border: 1px solid var(--color-primary);
           display: flex;
           align-items: center;
+
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 700;
         }
       }
     }
@@ -128,7 +140,7 @@
   }
 }
 
-#cheeseburger-menu .cheeseburger-menu__menu:last-child .button:not(.login,.signup) {
+#cheeseburger-menu .cheeseburger-menu__menu:last-child .button:not(.login, .signup) {
   background: var(--color-secondary);
   color: var(--color-primary);
   font-weight: 600;

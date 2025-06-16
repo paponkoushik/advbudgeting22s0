@@ -1,23 +1,23 @@
 <div
 	class="cheeseburger-menu" id="cheeseburger-menu">
 	{# <div class="cheeseburger-menu__close" id="cheeseburger-menu-close">
-		        <span></span>
-		    </div> #}
+						        <span></span>
+						    </div> #}
 	<div class="cheeseburger-menu__menu">
-	{% for page in pages.children.visible %}
-		{% if (page.home and not grav.user.authenticated) or (not page.home) %}
-			{% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
-			{% set requires_access = page.header.login ? page.header.login.visibility_requires_access : false %}
+		{% for page in pages.children.visible %}
+			{% if (page.home and not grav.user.authenticated) or (not page.home) %}
+				{% set current_page = (page.active or page.activeChild) ? 'active' : '' %}
+				{% set requires_access = page.header.login ? page.header.login.visibility_requires_access : false %}
 
-			{% if (requires_access == true and page.header.access['site.login'] and grav.user.authorized == true) or requires_access == false %}
-				<div class="menu-item {{ current_page|e }}">
-					<a class="menu-item__link" href="{{ page.url|e|replace({'%23': '#'}) }}">
-						{{ page.menu|e }}
-					</a>
-				</div>
+				{% if (requires_access == true and page.header.access['site.login'] and grav.user.authorized == true) or requires_access == false %}
+					<div class="menu-item {{ current_page|e }}">
+						<a class="menu-item__link" href="{{ page.url|e|replace({'%23': '#'}) }}">
+							{{ page.menu|e }}
+						</a>
+					</div>
+				{% endif %}
 			{% endif %}
-		{% endif %}
-	{% endfor %}
+		{% endfor %}
 	</div>
 	<div class="cheeseburger-menu__menu">
 		{% if grav.user.authenticated %}
@@ -30,13 +30,16 @@
 			</div>
 			<div class="menu-item">
 				<a class="menu-item__link  button btn signup" href="{{ webdata('signup_url') }}">
-				
+
 					<span>{{ "METRICALO.SIGNUP"|t }}</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewbox="0 0 25 24" fill="none">
+						<path d="M16.2071 6.29289C15.8166 5.90237 15.1834 5.90237 14.7929 6.2929C14.4024 6.68342 14.4024 7.31659 14.7929 7.70711L18.0858 11H4.5C3.94772 11 3.5 11.4477 3.5 12C3.5 12.5523 3.94772 13 4.5 13H18.0858L14.7929 16.2929C14.4024 16.6834 14.4024 17.3166 14.7929 17.7071C15.1835 18.0976 15.8166 18.0976 16.2072 17.7071L21.2018 12.7124C21.2202 12.6942 21.238 12.6753 21.255 12.6558C21.3225 12.5781 21.3761 12.4926 21.4158 12.4024C21.4696 12.2801 21.4996 12.145 21.5 12.003V12C21.5 11.9969 21.5 11.9938 21.5 11.9907C21.4988 11.865 21.4745 11.7447 21.431 11.6341C21.3822 11.5098 21.3076 11.3933 21.2071 11.2929L16.2071 6.29289Z" fill="white"/>
+					</svg>
 
 					{# <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-					<path d="M15.8269 6.85783C15.4364 6.46731 14.8032 6.46731 14.4127 6.85784C14.0222 7.24836 14.0222 7.88153 14.4127 8.27205L17.7056 11.5649H4.11975C3.56747 11.5649 3.11975 12.0126 3.11975 12.5649C3.11975 13.1172 3.56747 13.5649 4.11975 13.5649H17.7056L14.4127 16.8578C14.0222 17.2483 14.0222 17.8815 14.4127 18.272C14.8033 18.6625 15.4364 18.6625 15.827 18.272L20.8216 13.2773C20.84 13.2591 20.8577 13.2402 20.8748 13.2207C20.9422 13.143 20.9959 13.0575 21.0356 12.9673C21.0894 12.845 21.1194 12.7099 21.1198 12.5679V12.5649C21.1198 12.5618 21.1198 12.5587 21.1198 12.5556C21.1186 12.4299 21.0943 12.3096 21.0508 12.199C21.002 12.0747 20.9274 11.9582 20.8269 11.8578L15.8269 6.85783Z" fill="white"/>
-					</svg> #}
-				
+																					<path d="M15.8269 6.85783C15.4364 6.46731 14.8032 6.46731 14.4127 6.85784C14.0222 7.24836 14.0222 7.88153 14.4127 8.27205L17.7056 11.5649H4.11975C3.56747 11.5649 3.11975 12.0126 3.11975 12.5649C3.11975 13.1172 3.56747 13.5649 4.11975 13.5649H17.7056L14.4127 16.8578C14.0222 17.2483 14.0222 17.8815 14.4127 18.272C14.8033 18.6625 15.4364 18.6625 15.827 18.272L20.8216 13.2773C20.84 13.2591 20.8577 13.2402 20.8748 13.2207C20.9422 13.143 20.9959 13.0575 21.0356 12.9673C21.0894 12.845 21.1194 12.7099 21.1198 12.5679V12.5649C21.1198 12.5618 21.1198 12.5587 21.1198 12.5556C21.1186 12.4299 21.0943 12.3096 21.0508 12.199C21.002 12.0747 20.9274 11.9582 20.8269 11.8578L15.8269 6.85783Z" fill="white"/>
+																					</svg> #}
+
 				</a>
 			</div>
 		{% endif %}

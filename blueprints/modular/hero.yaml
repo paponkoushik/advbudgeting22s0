@@ -40,6 +40,22 @@ form:
                   type: textarea
                   label: Hero Text
                   classes: 'translatable'
+                header.hero.buttom_left_title.translatable:
+                  type: text
+                  label: bottom left title
+                  classes: 'translatable'
+                header.hero.buttom_left_text.translatable:
+                  type: text
+                  label: bottom left text
+                  classes: 'translatable'
+                header.hero.buttom_left_text_2.translatable:
+                  type: text
+                  label: bottom left text 2
+                  classes: 'translatable'
+                header.hero.buttom_right_text.translatable:
+                  type: text
+                  label: bottom right text
+                  classes: 'translatable'
                 header.hero.image:
                     type: pagemediaselect
                     label: Hero image

@@ -56,13 +56,34 @@
         max-width: 650px;
         width: 100%;
 
+        span {
+          position: relative;
+
+          &::after {
+            position: absolute;
+            height: 25px;
+            width: 100%;
+            content: "";
+            background-image: url("../../images/hero/span.svg");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            bottom: -15px;
+            left: 0;
+
+            @include desktop-small {
+              display: none;
+            }
+
+          }
+        }
+
 
         @include desktop-small {
           font-size: 48px;
           font-style: normal;
           font-weight: 700;
           line-height: 60px;
-          /* 125% */
           letter-spacing: -0.96px;
           text-align: center;
           max-width: 100%;
@@ -82,7 +103,7 @@
         line-height: 30px;
         // margin-bottom: 10px;
         margin-top: 24px;
-        max-width: 490px;
+        max-width: 579px;
         color: var(--color-text-light);
 
         @include desktop-small {
@@ -107,51 +128,166 @@
         display: block;
       }
 
+      .left_bottom_wrapper {
+
+        position: absolute;
+        bottom: 70px;
+        left: -40px;
+
+        @include desktop-small {
+          display: none;
+        }
+
+        .left_bottom {
+          border-radius: 20px 0px 20px 20px;
+
+          position: relative;
+          padding: 16px;
+          background-color: rgba(255, 255, 255, 0.30);
+          z-index: 1;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+
+
+
+          &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            border-radius: 20px 0px 20px 20px;
+            background: linear-gradient(77deg, rgba(251, 77, 23, 0.60) 10.39%, rgba(50, 223, 255, 0.60) 94.28%, rgba(125, 239, 255, 0.60) 138.26%);
+            -webkit-mask:
+              linear-gradient(#fff 0 0) content-box,
+              linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: -1;
+          }
+
+          h2 {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 30px;
+            color: var(--color-text-dark);
+          }
+
+          p {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 14px;
+            text-align: center;
+            color: var(--color-text-dark);
+
+            &:last-child {
+              margin-top: 8px
+            }
+          }
+        }
+
+      }
+
+      .left_bottom_right {
+        background-image: url("../../images/hero/hero_buttom_bg.webp");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 16px 0 23.5px;
+        max-width: 178px;
+        width: 100%;
+
+        position: absolute;
+        bottom: 7%;
+        left: 52%;
+
+        z-index: 2;
+
+        @include desktop-small {
+          display: none;
+        }
+
+        .bottom_top {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          padding-left: 16px;
+
+          // svg {
+          //   border-radius: 4px;
+          //   background: rgba(255, 255, 255, 0.20);
+          //   padding: 4px;
+          // }
+
+          p {
+            color: var(--color-white);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 8px;
+          }
+        }
+      }
+
+
       .floating {
         position: absolute;
-        width: 170px;
+        // width: 170px;
         /* Adjust size as needed */
         height: auto;
-        z-index: 10;
+        z-index: 1;
+
       }
 
       .cash {
-        top: 20px;
-        left: 20px;
+        top: 5%;
+        left: 32%;
+
+        @include mobile {
+          top: 0;
+          left: 0;
+        }
       }
 
       .bitcoin {
-        top: 20px;
-        right: 20px;
+        top: 18%;
+        right: 3%;
+
+        @include mobile {
+          top: 2%;
+          right: 3%;
+        }
       }
 
       .dollar {
-        top: 50%;
-        right: 10px;
+        top: 51%;
+        right: 1%;
         transform: translateY(-50%);
+        
+        @include mobile {
+          top: 57%;
+          right: 11%;
+        }
       }
 
       .arrow {
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
+        bottom: 29%;
+        right: 19%;
+        transform: rotate(10deg);
+        max-width: 150px;
+        width: 100%;
+
+        @include desktop-small {
+          display: none;
+        }
       }
-
-      // img {
-      //   width: 100%;
-      //   height: 100%;
-      //   display: flex;
-      //   align-items: end;
-
-      //   // @include tablet {
-      //   //   max-width: 242px;
-      //   //   margin: 0 auto;
-      //   // }
-
-      //   // @include tablet {
-      //   //   max-width: 225px;
-      //   // }
-      // }
     }
   }
 }

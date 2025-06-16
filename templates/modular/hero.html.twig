@@ -32,10 +32,33 @@
 					<img class="hero-img" src="{{ page.media[contents.image].url }}" alt="Hero Image"/>
 
 
-					<img src="{{ url('theme://images/hero/cash.webp') }}" class="floating cash" alt="Cash Icon"/>
-					<img src="{{ url('theme://images/hero/dollar.webp') }}" class="floating dollar" alt="Bitcoin Icon"/>
-					<img src="{{ url('theme://images/hero/bitcoin.webp') }}" class="floating bitcoin" alt="USD Icon"/>
+					<img src="{{ url('theme://images/hero/cash.png') }}" class="floating cash" alt="Cash Icon"/>
+					<img src="{{ url('theme://images/hero/dollar.png') }}" class="floating dollar" alt="Bitcoin Icon"/>
+					<img src="{{ url('theme://images/hero/bitcoin.png') }}" class="floating bitcoin" alt="USD Icon"/>
 					<img src="{{ url('theme://images/hero/arrow.webp') }}" class="floating arrow" alt="Time Chart"/>
+
+					<div class="left_bottom_wrapper">
+						<div class="left_bottom">
+							<h2>{{ contents.buttom_left_title.translatable|raw }}</h2>
+							<p>{{ contents.buttom_left_text.translatable|raw }}</p>
+							<p>{{ contents.buttom_left_text_2.translatable|raw }}</p>
+						</div>
+					</div>
+
+					<div class="left_bottom_right">
+						<div class="bottom_top">
+							<svg width="22" height="22" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect width="22" height="22" rx="4" fill="white" fill-opacity="0.2"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M9.83331 4.58331C9.51115 4.58331 9.24998 4.84448 9.24998 5.16665C9.24998 5.48881 9.51115 5.74998 9.83331 5.74998H10.4166V6.36365C7.63026 6.65514 5.45831 9.01142 5.45831 11.875C5.45831 14.9356 7.9394 17.4166 11 17.4166C14.0606 17.4166 16.5416 14.9356 16.5416 11.875C16.5416 9.01142 14.3697 6.65514 11.5833 6.36365V5.74998H12.1666C12.4888 5.74998 12.75 5.48881 12.75 5.16665C12.75 4.84448 12.4888 4.58331 12.1666 4.58331H9.83331ZM11.5833 9.54165C11.5833 9.21948 11.3221 8.95831 11 8.95831C10.6778 8.95831 10.4166 9.21948 10.4166 9.54165V11.875C10.4166 12.0799 10.5242 12.2698 10.6999 12.3752L12.1582 13.2502C12.4344 13.4159 12.7928 13.3264 12.9585 13.0501C13.1243 12.7738 13.0347 12.4155 12.7584 12.2498L11.5833 11.5447V9.54165Z" fill="white"/>
+								<path d="M14.5711 5.97438C14.799 5.74658 15.1683 5.74658 15.3961 5.97438L16.2711 6.84938C16.4989 7.07719 16.4989 7.44653 16.2711 7.67434C16.0433 7.90215 15.674 7.90215 15.4461 7.67434L14.5711 6.79934C14.3433 6.57153 14.3433 6.20219 14.5711 5.97438Z" fill="white"/>
+								<path d="M7.42882 5.97438C7.65662 6.20219 7.65662 6.57153 7.42882 6.79934L6.55382 7.67434C6.32601 7.90215 5.95666 7.90215 5.72886 7.67434C5.50105 7.44653 5.50105 7.07719 5.72886 6.84938L6.60386 5.97438C6.83166 5.74658 7.20101 5.74658 7.42882 5.97438Z" fill="white"/>
+							</svg>
+
+							<p>{{ contents.buttom_right_text.translatable|raw }}</p>
+						</div>
+						<img src="{{ url('theme://images/hero/amount.webp') }}" class="" alt="Time Chart"/>
+					</div>
+
 
 				</div>
 			{% endif %}
