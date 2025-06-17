@@ -65,7 +65,7 @@
 
         @include desktop-small {
           font-style: normal;
-          @include typography(display-sm, semibold);
+          @include typography(display-lg, bold);
         }
 
         font-family: var(--secondary-font);
