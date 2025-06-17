@@ -67,16 +67,6 @@
 
 				<div
 					class="image-container">
-					{# <div class="single_img">
-											{% if image_large %}
-												<img src="{{ image_large.url }}" alt="single Image"/>
-											{% endif %}
-					
-											<div class="single_img_content">
-												<h4>{{ module.img_title.translatable|striptags('<span>')|raw }}</h4>
-												<p>{{ module.img_description.translatable}}</p>
-											</div>
-										</div> #}
 
 					<div class="double_img">
 
@@ -85,10 +75,18 @@
 						<div class="buttom">
 							<img class="image_left" src="{{ image_bottom_left.url }}" alt="right Image"/>
 							<img class="image_right" src="{{ image_bottom_right.url }}" alt="right Image"/>
+							<div class="client">
+								<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewbox="0 0 62 62" fill="none">
+									<path d="M28.7289 5.32495C23.7947 5.3248 18.9529 6.66325 14.7193 9.1977C10.4858 11.7321 7.01911 15.3676 4.68867 19.7168C2.35822 24.066 1.25133 28.966 1.48593 33.8946C1.72052 38.8233 3.28781 43.5959 6.0208 47.7041C8.7538 51.8123 12.5501 55.1021 17.0053 57.223C21.4604 59.3439 26.4075 60.2164 31.3194 59.7476C36.2312 59.2788 40.9239 57.4862 44.8975 54.5608C48.871 51.6355 51.9764 47.687 53.8829 43.136L28.7289 32.597V5.32495Z" fill="#FB4D17"/>
+									<path d="M58.023 40.465C59.8901 36.3305 60.6963 31.7955 60.3686 27.2708C60.0409 22.7462 58.5896 18.3747 56.1463 14.5524C53.703 10.7301 50.3447 7.57762 46.3757 5.38056C42.4067 3.18351 37.9524 2.01126 33.416 1.96997L33.166 29.242L58.023 40.465Z" fill="#B2C2C0"/>
+								</svg>
+								<div class="client_satisfaction">
+									<h1>{{ module.img_title.translatable }}</h1>
+									<p>{{ module.img_description.translatable }}</p>
+								</div>
+
+							</div>
 						</div>
-						{# {% if image_right %}
-							<img class="image_right" src="{{ image_right.url }}" alt="right Image"/>
-						{% endif %} #}
 					</div>
 
 				</div>
