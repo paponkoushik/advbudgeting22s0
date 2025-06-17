@@ -1,0 +1,322 @@
+{% extends 'partials/variables.html.twig' %}
+
+{% set module = page.header.contents %}
+{% set content = page.header.about_us_content %}
+{% set image = page.media[module.image] %}
+
+{% block render_block %}
+    <div class="about_us_unique_wrapper slide-up">
+        <div class="container">
+            <div class="about_us_unique_parent">
+                <div class="about_us_unique_header">
+                    <h3 class="title">{{ module.header_title.translatable }}</h3>
+                    <p class="description">{{ module.header_description.translatable }}</p>
+                </div>
+                <div class="about_us_unique_content">
+                    <div class="count_content">
+                        {% for key, item in content %}
+                            {% set image = page.media[item.image] %}
+                            <div class="count_row  {{ (key == 1 or key == 2) ? "active" : "" }}"
+                                 style="background-image: url('{{ image.url }}')">
+                                <div class="count">
+                                    <h4 class="count_number">{{ item.count.translatable|raw }}</h4>
+                                    <div class="icon_title">
+                                        <h4 class="count_title">{{ item.title.translatable|raw }}</h4>
+                                        <p class="count_details">
+                                            {{ item.brief.translatable|raw }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="slider_dots"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const wrapper = document.querySelector('.about_us_unique_wrapper');
+            const sliderContainer = wrapper.querySelector('.count_content');
+            const dotsContainer = wrapper.querySelector('.slider_dots');
+            const visibleCount = 4;
+            const totalOriginal = sliderContainer.children.length;
+            const enableAutoSlide = false;
+            let slides = [];
+            let currentIndex = visibleCount;
+            let autoSlideInterval;
+            let isSliderActive = false;
+
+            function cloneSlides() {
+                const originalSlides = Array.from(sliderContainer.children);
+                const firstClones = originalSlides.slice(0, visibleCount).map(el => el.cloneNode(true));
+                const lastClones = originalSlides.slice(-visibleCount).map(el => el.cloneNode(true));
+
+                firstClones.forEach(clone => sliderContainer.appendChild(clone));
+                lastClones.reverse().forEach(clone => sliderContainer.prepend(clone));
+
+                slides = Array.from(wrapper.querySelectorAll('.count_row'));
+            }
+
+            function setupStyles() {
+                const slideWidth = 100 / visibleCount;
+                sliderContainer.style.display = 'flex';
+                sliderContainer.style.transition = 'transform 0.5s ease';
+                sliderContainer.style.willChange = 'transform';
+                sliderContainer.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+                slides.forEach(slide => {
+                    slide.style.flex = `0 0 ${slideWidth}%`;
+                });
+            }
+
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalOriginal; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.dataset.index = i;
+                    dot.addEventListener('click', () => {
+                        currentIndex = i + visibleCount;
+                        updateSlider();
+                        if (enableAutoSlide) resetAutoSlide();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function updateSlider() {
+                const slideWidthPercent = 100 / visibleCount;
+                sliderContainer.style.transition = 'transform 0.5s ease';
+                sliderContainer.style.transform = `translateX(-${currentIndex * slideWidthPercent}%)`;
+
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                    slide.classList.remove('edge');
+                    slide.style.marginLeft = '0';
+                });
+
+                // Add .edge to 1st and 4th visible slides
+                const firstIdx = currentIndex;
+                const fourthIdx = currentIndex + 3;
+
+                if (slides[firstIdx]) {
+                    slides[firstIdx].classList.add('edge');
+                    slides[firstIdx].style.marginLeft = '25px';
+                }
+                if (slides[fourthIdx]) slides[fourthIdx].classList.add('edge');
+
+                // Add .active to 2nd and 3rd visible slides
+                const secondIdx = currentIndex + 1;
+                const thirdIdx = currentIndex + 2;
+
+                if (slides[secondIdx]) slides[secondIdx].classList.add('active');
+                if (slides[thirdIdx]) slides[thirdIdx].classList.add('active');
+
+                // Update dot indicators
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                let dotIndex = (currentIndex - visibleCount) % totalOriginal;
+                if (dotIndex < 0) dotIndex += totalOriginal;
+                if (dots[dotIndex]) dots[dotIndex].classList.add('active');
+            }
+
+
+            function jumpWithoutAnimation(index) {
+                sliderContainer.style.transition = 'none';
+                sliderContainer.style.transform = `translateX(-${index * (100 / visibleCount)}%)`;
+                currentIndex = index;
+                requestAnimationFrame(() => {
+                    updateSlider();
+                    sliderContainer.style.transition = 'transform 0.5s ease';
+                });
+            }
+
+            function startAutoSlide() {
+                if (!enableAutoSlide) return;
+                autoSlideInterval = setInterval(() => {
+                    currentIndex++;
+                    updateSlider();
+
+                    if (currentIndex >= slides.length - visibleCount) {
+                        setTimeout(() => {
+                            jumpWithoutAnimation(visibleCount);
+                        }, 510);
+                    }
+                }, 3000);
+            }
+
+            function resetAutoSlide() {
+                if (!enableAutoSlide) return;
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            function destroySlider() {
+                clearInterval(autoSlideInterval);
+                sliderContainer.style.transition = '';
+                sliderContainer.style.transform = '';
+                sliderContainer.style.display = '';
+                sliderContainer.style.willChange = '';
+                sliderContainer.innerHTML = '';
+
+                const originalSlides = Array.from(slides).slice(visibleCount, visibleCount + totalOriginal);
+                originalSlides.forEach(slide => {
+                    slide.style.flex = '';
+                    slide.classList.remove('active');
+                    sliderContainer.appendChild(slide);
+                });
+
+                dotsContainer.innerHTML = '';
+                isSliderActive = false;
+            }
+
+            function initSlider() {
+                if (isSliderActive) return;
+                cloneSlides();
+                setupStyles();
+                createDots();
+                updateSlider();
+                startAutoSlide();
+                isSliderActive = true;
+            }
+
+            function handleResponsiveSlider() {
+                if (window.innerWidth >= 1024) {
+                    initSlider();
+                } else {
+                    if (isSliderActive) destroySlider();
+                }
+            }
+
+            // Initial load
+            handleResponsiveSlider();
+
+            // Listen for resize
+            window.addEventListener('resize', () => {
+                handleResponsiveSlider();
+            });
+        });
+    </script>
+
+
+    {#    <script>#}
+{#        document.addEventListener("DOMContentLoaded", function () {#}
+{#            const minWidth = 1025;#}
+{#            let sliderInitialized = false;#}
+{#            let autoSlideTimer;#}
+
+{#            function initSlider() {#}
+{#                const track = document.querySelector(".about_us_unique_parent .count_content");#}
+{#                const slides = document.querySelectorAll(".about_us_unique_parent .count_row");#}
+{#                const dotsContainer = document.querySelector(".about_us_unique_parent .slider_dots");#}
+
+{#                const visibleCount = 4;#}
+{#                const totalSlides = slides.length;#}
+{#                let currentIndex = 0;#}
+
+{#                const autoSlide = true;#}
+{#                const autoSlideDelay = 5000;#}
+
+{#                // Prevent multiple inits#}
+{#                if (sliderInitialized) return;#}
+{#                sliderInitialized = true;#}
+
+{#                // Create Dots#}
+{#                dotsContainer.innerHTML = "";#}
+{#                const dotCount = totalSlides;#}
+{#                for (let i = 0; i < dotCount; i++) {#}
+{#                    const dot = document.createElement("span");#}
+{#                    dot.classList.add("dot");#}
+{#                    dot.dataset.index = i;#}
+{#                    dotsContainer.appendChild(dot);#}
+{#                }#}
+{#                const dots = dotsContainer.querySelectorAll(".dot");#}
+
+{#                function updateSlider(index) {#}
+{#                    currentIndex = (index + totalSlides) % totalSlides;#}
+{#                    const offset = -(currentIndex * 100) / visibleCount;#}
+{#                    track.style.transform = `translateX(${offset}%)`;#}
+
+{#                    slides.forEach((slide, i) => {#}
+{#                        slide.classList.remove("active", "offset-0", "offset-1", "offset-2", "offset-3");#}
+{#                    });#}
+
+{#                    for (let i = 0; i < visibleCount; i++) {#}
+{#                        const idx = (currentIndex + i) % totalSlides;#}
+{#                        slides[idx].classList.add(`offset-${i}`);#}
+{#                        if (i === 1 || i === 2) {#}
+{#                            slides[idx].classList.add("active");#}
+{#                        }#}
+{#                    }#}
+
+{#                    dots.forEach(dot => dot.classList.remove("active"));#}
+{#                    if (dots[currentIndex]) {#}
+{#                        dots[currentIndex].classList.add("active");#}
+{#                    }#}
+{#                }#}
+
+{#                function nextSlide() {#}
+{#                    const next = (currentIndex + 1) % totalSlides;#}
+{#                    updateSlider(next);#}
+{#                }#}
+
+{#                function startAutoSlide() {#}
+{#                    if (autoSlide) {#}
+{#                        autoSlideTimer = setInterval(nextSlide, autoSlideDelay);#}
+{#                    }#}
+{#                }#}
+
+{#                function resetAutoSlide() {#}
+{#                    if (autoSlide) {#}
+{#                        clearInterval(autoSlideTimer);#}
+{#                        startAutoSlide();#}
+{#                    }#}
+{#                }#}
+
+{#                dots.forEach(dot => {#}
+{#                    dot.addEventListener("click", () => {#}
+{#                        const index = parseInt(dot.dataset.index);#}
+{#                        updateSlider(index);#}
+{#                        resetAutoSlide();#}
+{#                    });#}
+{#                });#}
+
+{#                updateSlider(currentIndex);#}
+{#                startAutoSlide();#}
+{#            }#}
+
+{#            function destroySlider() {#}
+{#                const track = document.querySelector(".about_us_unique_parent .count_content");#}
+{#                const dotsContainer = document.querySelector(".about_us_unique_parent .slider_dots");#}
+{#                const slides = document.querySelectorAll(".about_us_unique_parent .count_row");#}
+
+{#                track.style.transform = "";#}
+{#                dotsContainer.innerHTML = "";#}
+{#                clearInterval(autoSlideTimer);#}
+
+{#                slides.forEach(slide => {#}
+{#                    slide.classList.remove("active", "offset-0", "offset-1", "offset-2", "offset-3");#}
+{#                });#}
+
+{#                sliderInitialized = false;#}
+{#            }#}
+
+{#            function handleResponsiveSlider() {#}
+{#                if (window.innerWidth >= minWidth) {#}
+{#                    if (!sliderInitialized) initSlider();#}
+{#                } else {#}
+{#                    if (sliderInitialized) destroySlider();#}
+{#                }#}
+{#            }#}
+
+{#            handleResponsiveSlider();#}
+{#            window.addEventListener("resize", handleResponsiveSlider);#}
+{#        });#}
+{#    </script>#}
+
+{% endblock %}
