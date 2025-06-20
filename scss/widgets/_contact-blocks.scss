@@ -147,10 +147,10 @@
         h1 {
           font-family: var(--secondary-font);
           color: var(--color-text-dark);
-          @include typography(display-lg, bold);
+          @include typography(display-lg, semibold);
 
           @include tablet {
-            @include typography(display-md, bold);
+            @include typography(display-sm, semibold);
           }
         }
 
@@ -160,6 +160,7 @@
 
         p {
           @include typography(text-lg, regular);
+          color: var(--color-text-light);
         }
       }
 

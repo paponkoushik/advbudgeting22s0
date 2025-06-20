@@ -84,7 +84,8 @@
 				</div>
 
 				<div class="video-container">
-					<video id="myVideo" class="lazy-video" width="100%" preload="none" poster="{{ url('theme://images/video-poster.png') }}" data-src="{{ url('theme://images/video.mp4') }}"></video>
+				{# Autoplay muted loop playsinline  #}
+					<video id="myVideo" muted playsinline loop class="lazy-video" width="100%" preload="none" poster="{{ url('theme://images/video-poster.png') }}" data-src="{{ url('theme://images/video.mp4') }}"></video>
 					{# <button class="play-button">▶</button> #}
 				</div>
 
@@ -92,4 +93,136 @@
 		</div>
 
 	</div>
+
+	{# <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('myVideo');
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            if (!video.src && video.dataset.src) {
+                video.src = video.dataset.src;
+                video.load();
+            }
+            
+            video.play().catch(error => {
+                console.error('Autoplay failed:', error);
+            });
+        } else {
+            video.pause();
+        }
+    }, { threshold: 0.7 });
+
+    observer.observe(video);
+
+    video.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+
+    video.addEventListener('mouseenter', () => {
+        if (!video.paused) {
+            video.style.cursor = 'pointer';
+        }
+    });
+
+    video.addEventListener('mouseleave', () => {
+        video.style.cursor = 'default';
+    });
+});
+</script> #}
+
+{# <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('myVideo');
+
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            if (!video.src && video.dataset.src) {
+                video.src = video.dataset.src;
+                video.load();
+            }
+            
+            video.play().catch(error => {
+                console.error('Autoplay failed:', error);
+            });
+        } else {
+            video.pause();
+        }
+    }, { threshold: 0.7 });
+
+    observer.observe(video);
+
+    // Add ended event listener to restart video when it finishes
+    video.addEventListener('ended', () => {
+        video.currentTime = 0; // Rewind to start
+        video.play().catch(error => {
+            console.error('Autoplay failed:', error);
+        });
+    });
+
+    video.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+
+    video.addEventListener('mouseenter', () => {
+        if (!video.paused) {
+            video.style.cursor = 'pointer';
+        }
+    });
+
+    video.addEventListener('mouseleave', () => {
+        video.style.cursor = 'default';
+    });
+});
+</script> #}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('myVideo');
+    
+    // Essential settings for autoplay
+    video.muted = true; // Required for autoplay
+    video.playsInline = true; // For iOS
+    video.loop = true;
+    video.preload = 'metadata'; // Optimized lazy loading
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Lazy load if needed
+                if (!video.src && video.dataset.src) {
+                    video.src = video.dataset.src;
+                    video.load();
+                }
+                
+                // Attempt to play (no fallback button)
+                video.play().catch(error => {
+                    console.log('Autoplay blocked (normal on mobile):', error);
+                });
+            } else {
+                video.pause();
+            }
+        });
+    }, { 
+        threshold: 0.7,
+        rootMargin: '0px 0px -50px 0px' // Triggers slightly early
+    });
+
+    observer.observe(video);
+
+    // Optional: Click to play/pause (remove if unwanted)
+    video.addEventListener('click', () => {
+        if (video.paused) video.play();
+        else video.pause();
+    });
+});
+</script>
 {% endblock %}

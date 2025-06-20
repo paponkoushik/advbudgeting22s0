@@ -92,14 +92,14 @@
                     // }
 
                     p {
-                        @include typography(text-md, regular);
+                        @include typography(text-lg, regular);
                         color: var(--color-text-light);
                     }
 
                     h5 {
-                        @include typography(text-lg, bold);
+                        @include typography(display-xs, semibold);
                         color: var(--color-text-dark);
-                        // font-family: var(--secondary-font);
+                        font-family: var(--secondary-font);
                     }
                 }
             }
